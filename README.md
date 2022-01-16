@@ -1,12 +1,12 @@
 ## One Click
 When you want to initialize development environment at macOS for developing web project, just use one click.
 
-## How to 
-- Firstly, if you never install git, so you can install the shell.sh file or create a new .sh file (PS: You can copy the code).
-- Then, just execute terminal commands below 
+## Feature
+- The shell will help you to install the tools that develop the web project such as git, nvm, ndoe(LTS), omz, and so on. You can never care about these tools install address.
+
+## How to use
+- just execute the command below in your terminal
 
 ```
-cd workspace
-
-chmod +x ./shell.sh
+curl -o- https://raw.githubusercontent.com/CasoMemory/one-click/develop/shell.sh | bash
 ```
