@@ -33,7 +33,10 @@ install() {
 
 
 if [[ $sys =~ $mac ]]; then
-    xcode-install 
+    xcode-select-install git
+
+    # execute
+    install
 elif [[ $sys =~ $linux ]]; then
     yum install -y git
 
