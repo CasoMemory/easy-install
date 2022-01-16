@@ -20,7 +20,7 @@ install() {
     # install node
     if [[$checkNVM = "nvm"]]
         nvm install --lts
-    elif
+    else
         chmod +x ~/.nvm/nvm.sh
         nvm install --lts
     fi
