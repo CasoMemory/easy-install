@@ -2,7 +2,7 @@
 sys=`uname -a`
 
 mac="Darwin"
-linux="linux"
+linux="Linux"
 
 install() {
     # install homebrew
