@@ -39,7 +39,7 @@ if [[ $sys =~ $mac ]]; then
     install
 elif [[ $sys =~ $linux ]]; then
     yum install -y git
-
+    echo "your laptop OS is $sys, start to execute the shell"
     # execute
     install
 else
