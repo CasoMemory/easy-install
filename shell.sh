@@ -16,7 +16,7 @@ install() {
     curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
 
     checkNVM=`command -v nvm`
-    
+
     # install node
     if [[$checkNVM = "nvm"]]
         nvm install --lts
