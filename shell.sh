@@ -8,15 +8,15 @@ install() {
     # install homebrew
     git clone https://github.com/Homebrew/brew homebrew
 
-    # eval "$(homebrew/bin/brew shellenv)"
-    # brew update --force --quiet
-    # chmod -R go-w "$(brew --prefix)/share/zsh"
+    eval "$(homebrew/bin/brew shellenv)"
+    brew update --force --quiet
+    chmod -R go-w "$(brew --prefix)/share/zsh"
 
     # install nvm
     curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
 
-    # This loads nvm
-    export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")" [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" 
+    # make the nvm command active
+    source ~/.nvm/nvm.sh
 
     checkNVM=`command -v nvm`
 
@@ -29,23 +29,48 @@ install() {
     fi
 
     nvm use --lts
-    
-    # install omz
-    sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+
+    nv=`nvm -v`
+    nov=`node -v`
+
+    echo "nvm verison is ${nv}, node version is ${nov}"
 }
 
+installTool() {
+    if [[ $sys =~ $mac ]]; then
+       brew install zsh
+    elif [[ $sys =~ $linux ]]; then
+        yum -y install zsh
+    else
+        echo "will support install tools"
+    fi
+
+    chsh -s /usr/local/bin/zsh
+
+    chsh -s /bin/zsh
+
+    source ~/.zshrc
+
+    echo "Congratulations! All tools installed"
+
+    kill `ps -A | grep -w Terminal.app | grep -v grep | awk '{print $1}'`
+}
 
 if [[ $sys =~ $mac ]]; then
     xcode-select --install
 
     # execute
     install
+
+    installTool
 elif [[ $sys =~ $linux ]]; then
     echo "your laptop OS is $sys, start to execute the shell"
     yum install -y git
     
     # execute
     install
+
+    installTool
 else
     echo "your laptop OS is $sys"
 fi
