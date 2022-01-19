@@ -8,9 +8,9 @@ install() {
     # install homebrew
     git clone https://github.com/Homebrew/brew homebrew
 
-    eval "$(homebrew/bin/brew shellenv)"
-    brew update --force --quiet
-    chmod -R go-w "$(brew --prefix)/share/zsh"
+    # eval "$(homebrew/bin/brew shellenv)"
+    # brew update --force --quiet
+    # chmod -R go-w "$(brew --prefix)/share/zsh"
 
     # install nvm
     curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
@@ -38,8 +38,9 @@ if [[ $sys =~ $mac ]]; then
     # execute
     install
 elif [[ $sys =~ $linux ]]; then
-    yum install -y git
     echo "your laptop OS is $sys, start to execute the shell"
+    yum install -y git
+    
     # execute
     install
 else
