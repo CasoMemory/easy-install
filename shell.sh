@@ -6,11 +6,11 @@ linux="Linux"
 
 install() {
     # install homebrew
-    #git clone https://github.com/Homebrew/brew homebrew
+    git clone https://github.com/Homebrew/brew homebrew
 
-    # eval "$(homebrew/bin/brew shellenv)"
-    # brew update --force --quiet
-    # chmod -R go-w "$(brew --prefix)/share/zsh"
+    eval "$(homebrew/bin/brew shellenv)"
+    brew update --force --quiet
+    chmod -R go-w "$(brew --prefix)/share/zsh"
 
     # install nvm
     curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
@@ -33,7 +33,7 @@ install() {
 
 
 if [[ $sys =~ $mac ]]; then
-    xcode-select-install git
+    xcode-select --install
 
     # execute
     install
