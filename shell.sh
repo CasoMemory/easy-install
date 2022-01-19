@@ -18,7 +18,7 @@ install() {
     checkNVM=`command -v nvm`
 
     # install node
-    if [[ $checkNVM = "nvm" ]]
+    if [[ $checkNVM = "nvm" ]]; then
         nvm install --lts
     else
         chmod +x ~/.nvm/nvm.sh
@@ -32,14 +32,12 @@ install() {
 }
 
 
-if [[ $sys =~ $mac ]]
-then
+if [[ $sys =~ $mac ]]; then
     xcode-select --install
 
     # execute
     install
-elif [[ $sys =~ $linux ]]
-then
+elif [[ $sys =~ $linux ]]; then
     yum install -y git
     echo "your laptop OS is $sys, start to execute the shell"
     # execute
