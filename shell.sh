@@ -9,7 +9,9 @@ install() {
     git clone https://github.com/Homebrew/brew homebrew
 
     eval "$(homebrew/bin/brew shellenv)"
+
     brew update --force --quiet
+
     chmod -R go-w "$(brew --prefix)/share/zsh"
 
     # install nvm
@@ -25,6 +27,7 @@ install() {
         nvm install --lts
     else
         chmod +x ~/.nvm/nvm.sh
+
         nvm install --lts
     fi
 
@@ -38,7 +41,7 @@ install() {
 
 installTool() {
     if [[ $sys =~ $mac ]]; then
-       brew install zsh
+        brew install zsh
     elif [[ $sys =~ $linux ]]; then
         yum -y install zsh
     else
