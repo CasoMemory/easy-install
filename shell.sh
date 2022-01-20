@@ -3,6 +3,7 @@ sys=`uname -a`
 
 mac="Darwin"
 linux="Linux"
+usr_name=`whoami`
 
 install() {
     # install homebrew
@@ -47,6 +48,8 @@ installTool() {
 
         source ~/.zshrc
     elif [[ $sys =~ $linux ]]; then
+        yum install sudo
+
         yum install -y zsh
 
         usermod -s /bin/zsh `whoami`
@@ -56,7 +59,8 @@ installTool() {
 
     echo "Congratulations! All tools installed"
 
-    kill `ps -A | grep -w Terminal.app | grep -v grep | awk '{print $1}'`
+    ## close terminal
+    exit 0
 }
 
 if [[ $sys =~ $mac ]]; then
