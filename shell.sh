@@ -42,17 +42,17 @@ install() {
 installTool() {
     if [[ $sys =~ $mac ]]; then
         brew install zsh
+
+        chsh -s /bin/zsh
+
+        source ~/.zshrc
     elif [[ $sys =~ $linux ]]; then
-        yum -y install zsh
+        yum install -y zsh
+
+        usermod -s /bin/zsh `whoami`
     else
         echo "will support install tools"
     fi
-
-    chsh -s /usr/local/bin/zsh
-
-    chsh -s /bin/zsh
-
-    source ~/.zshrc
 
     echo "Congratulations! All tools installed"
 
