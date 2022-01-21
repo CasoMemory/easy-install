@@ -4,6 +4,7 @@ sys=`uname -a`
 mac="Darwin"
 linux="Linux"
 usr_name=`whoami`
+zsh_check=`command -v zsh`
 
 install() {
     # install homebrew
@@ -38,24 +39,15 @@ install() {
     nov=`node -v`
 
     echo "nvm verison is ${nv}, node version is ${nov}"
-}
 
-installTool() {
-    if [[ $sys =~ $mac ]]; then
+    if [[ $zsh_check != "/usr/bin/zsh" ]]; then
         brew install zsh
 
-        chsh -s /bin/zsh
-
-        source ~/.zshrc
-    elif [[ $sys =~ $linux ]]; then
-        yum install sudo
-
-        yum install -y zsh
-
-        usermod -s /bin/zsh `whoami`
-    else
-        echo "will support install tools"
+        chsh -s /usr/bin/zsh
     fi
+
+    # install omz
+    sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 
     echo "Congratulations! All tools installed"
 
@@ -68,16 +60,12 @@ if [[ $sys =~ $mac ]]; then
 
     # execute
     install
-
-    installTool
 elif [[ $sys =~ $linux ]]; then
     echo "your laptop OS is $sys, start to execute the shell"
     yum install -y git
     
     # execute
     install
-
-    installTool
 else
     echo "your laptop OS is $sys"
 fi

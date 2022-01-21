@@ -1,12 +1,12 @@
-## One Click
-When you want to initialize development environment at macOS for developing web project, just use one click.
+## easy install
+When you want to initialize development environment at macOS for developing web project, just use easy install.
 
 ## Feature
-- The shell will help you to install the tools that develop the web project such as git, nvm, ndoe(LTS), omz, and so on. You can never care about these tools install address.
+- The shell will help you to install the tools that develop the web project such as homebrew, git, nvm, node(LTS), omz, and so on. You can never care about these tools install address.
 
 ## How to use
-- just execute the command below in your terminal
+- Execute the command below in your terminal
 
 ```
-curl -o- https://raw.githubusercontent.com/CasoMemory/one-click/develop/shell.sh | bash
+curl -o- https://raw.githubusercontent.com/CasoMemory/easy-intall/master/shell.sh | bash
 ```
