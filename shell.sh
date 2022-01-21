@@ -4,6 +4,7 @@ sys=`uname -a`
 mac="Darwin"
 linux="Linux"
 empty_str=""
+bin_zsh=`command -v zsh`
 
 
 install() {
@@ -35,8 +36,7 @@ install() {
 
     source ~/.zshrc
 
-    echo "nvm verison is ${nv}, node version is ${nov}"    
-
+    echo "nvm verison is ${nv}, node version is ${nov}"
     echo "Congratulations! All tools installed"
 }
 
@@ -71,7 +71,7 @@ elif [[ $sys =~ $linux ]]; then
         yum install zsh -y
     fi
 
-    chsh -s /usr/bin/zsh
+    chsh -s $bin_zsh
 
     zsh
 
