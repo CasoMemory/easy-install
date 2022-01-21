@@ -3,19 +3,9 @@ sys=`uname -a`
 
 mac="Darwin"
 linux="Linux"
-usr_name=`whoami`
 zsh_check=`command -v zsh`
 
 install() {
-    # install homebrew
-    git clone https://github.com/Homebrew/brew homebrew
-
-    eval "$(homebrew/bin/brew shellenv)"
-
-    brew update --force --quiet
-
-    chmod -R go-w "$(brew --prefix)/share/zsh"
-
     # install nvm
     curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
 
@@ -36,14 +26,6 @@ install() {
 
     echo "nvm verison is ${nv}, node version is ${nov}"
 
-    if [[ $zsh_check != "/bin/zsh" ]]; then
-        brew install zsh
-
-        command -v chsh != "/usr/bin/chsh" && brew install util-linux-user
-
-        chsh -s /usr/bin/zsh
-    fi
-
     # install omz
     sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 
@@ -56,12 +38,23 @@ install() {
 if [[ $sys =~ $mac ]]; then
     xcode-select --install
 
+    # install homebrew
+    /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+
     # execute
     install
 elif [[ $sys =~ $linux ]]; then
     echo "your laptop OS is $sys, start to execute the shell"
     yum install -y git
     
+    command -v sudo != "/usr/bin/sudo" && yum install sudo
+
+    command -v chsh != "/usr/bin/chsh" && yum install util-linux-user
+
+    command -v zsh != "/usr/bin/zsh" && yum install zsh
+
+    chsh -s /usr/bin/zsh
+
     # execute
     install
 else
