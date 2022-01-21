@@ -4,8 +4,6 @@ sys=`uname -a`
 mac="Darwin"
 linux="Linux"
 empty_str=""
-bin_zsh=`command -v zsh`
-
 
 install() {
     # install nvm
@@ -71,9 +69,9 @@ elif [[ $sys =~ $linux ]]; then
         yum install zsh -y
     fi
 
-    chsh -s $bin_zsh
-
     zsh
+
+    chsh -s $(which zsh)
 
     # execute
     install
