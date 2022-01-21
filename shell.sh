@@ -27,10 +27,6 @@ install() {
     # install node
     if [[ $checkNVM = "nvm" ]]; then
         nvm install --lts
-    else
-        chmod +x ~/.nvm/nvm.sh
-
-        nvm install --lts
     fi
 
     nvm use --lts
@@ -40,8 +36,10 @@ install() {
 
     echo "nvm verison is ${nv}, node version is ${nov}"
 
-    if [[ $zsh_check != "/usr/bin/zsh" ]]; then
+    if [[ $zsh_check != "/bin/zsh" ]]; then
         brew install zsh
+
+        command -v chsh != "/usr/bin/chsh" && brew install util-linux-user
 
         chsh -s /usr/bin/zsh
     fi
