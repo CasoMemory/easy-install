@@ -32,8 +32,7 @@ install() {
 
     echo "Congratulations! All tools installed"
 
-    ## close terminal
-    exit 0
+    source ~/.zshrc
 }
 
 if [[ $sys =~ $mac ]]; then
@@ -68,6 +67,8 @@ elif [[ $sys =~ $linux ]]; then
     fi
 
     chsh -s /usr/bin/zsh
+
+    zsh
 
     # execute
     install
