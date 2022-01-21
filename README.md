@@ -1,4 +1,4 @@
-## easy install
+## Easy install
 When you want to initialize development environment at macOS for developing web project, just use easy install.
 
 ## Feature

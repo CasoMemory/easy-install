@@ -25,14 +25,17 @@ install() {
     nv=`nvm -v`
     nov=`node -v`
 
-    echo "nvm verison is ${nv}, node version is ${nov}"
-
     # install omz
     sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 
-    source ~/.bash_profile
+    # write the .zshrc file
+    echo 'export NVM_DIR="$HOME/.nvm"' >> ~/.zshrc
+    echo '[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"' >> ~/.zshrc
+    echo '[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"' >> ~/.zshrc
 
     source ~/.zshrc
+
+    echo "nvm verison is ${nv}, node version is ${nov}"    
 
     echo "Congratulations! All tools installed"
 }
