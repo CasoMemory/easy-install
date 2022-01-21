@@ -7,11 +7,14 @@ empty_str=""
 
 
 install() {
-    # install nvm
-    curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
+    exec zsh
 
-    # make the nvm command active
-    source ~/.nvm/nvm.sh
+    # install omz
+    sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+
+    echo "plugins+=(zsh-nvm)" >> ~/.zshrc
+
+    source ~/.zshrc
 
     checkNVM=`command -v nvm`
 
@@ -27,16 +30,7 @@ install() {
 
     echo "nvm verison is ${nv}, node version is ${nov}"
 
-    # install omz
-    sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-
     echo "Congratulations! All tools installed"
-
-    zsh
-
-    source ~/.zshrc
-
-    source ~/.nvm/nvm.sh
 }
 
 if [[ $sys =~ $mac ]]; then
