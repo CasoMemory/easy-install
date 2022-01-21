@@ -32,7 +32,11 @@ install() {
 
     echo "Congratulations! All tools installed"
 
+    zsh
+
     source ~/.zshrc
+
+    source ~/.nvm/nvm.sh
 }
 
 if [[ $sys =~ $mac ]]; then
@@ -67,8 +71,6 @@ elif [[ $sys =~ $linux ]]; then
     fi
 
     chsh -s /usr/bin/zsh
-
-    zsh
 
     # execute
     install
