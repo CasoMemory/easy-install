@@ -12,12 +12,7 @@ install() {
     # make the nvm command active
     source ~/.nvm/nvm.sh
 
-    checkNVM=`command -v nvm`
-
-    # install node
-    if [[ $checkNVM = "nvm" ]]; then
-        nvm install --lts
-    fi
+    nvm install --lts
 
     nvm use --lts
 
