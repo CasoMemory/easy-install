@@ -9,5 +9,5 @@ When you want to initialize development environment at macOS for developing web 
 - Execute the command below in your terminal
 
 ```
-curl -o- https://raw.githubusercontent.com/CasoMemory/easy-intall/master/shell.sh | bash
+curl -o- https://raw.githubusercontent.com/CasoMemory/easy-install/main/shell.sh | bash
 ```
