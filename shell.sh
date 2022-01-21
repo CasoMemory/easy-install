@@ -3,7 +3,8 @@ sys=`uname -a`
 
 mac="Darwin"
 linux="Linux"
-zsh_check=`command -v zsh`
+empty_str=""
+
 
 install() {
     # install nvm
@@ -46,12 +47,25 @@ if [[ $sys =~ $mac ]]; then
 elif [[ $sys =~ $linux ]]; then
     echo "your laptop OS is $sys, start to execute the shell"
     yum install -y git
-    
-    command -v sudo != "/usr/bin/sudo" && yum install sudo
 
-    command -v chsh != "/usr/bin/chsh" && yum install util-linux-user
+    check_sudo=`command -v sudo`
+    check_chsh=`command -v chsh`
+    check_zsh=`command -v zsh`
 
-    command -v zsh != "/usr/bin/zsh" && yum install zsh
+    # install sudo
+    if [[ $check_sudo = "" ]]; then
+        yum install sudo -y
+    fi
+
+    # install chsh
+    if [[ $check_chsh = "" ]]; then
+        yum install util-linux-user
+    fi
+
+    # install zsh
+    if [[ $check_chsh = "" ]]; then
+        yum install zsh -y
+    fi
 
     chsh -s /usr/bin/zsh
 
