@@ -64,7 +64,7 @@ elif [[ $sys =~ $linux ]]; then
 
     chsh -s /usr/bin/zsh
 
-    exec zsh
+    zsh
 
     # execute
     install
