@@ -71,8 +71,6 @@ elif [[ $sys =~ $linux ]]; then
 
     zsh
 
-    chsh -s $(which zsh)
-
     # execute
     install
 else
