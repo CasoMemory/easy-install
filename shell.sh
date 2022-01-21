@@ -7,8 +7,6 @@ empty_str=""
 
 
 install() {
-    exec zsh
-
     # install omz
     sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 
@@ -56,7 +54,7 @@ elif [[ $sys =~ $linux ]]; then
 
     # install chsh
     if [[ $check_chsh = "" ]]; then
-        yum install util-linux-user
+        yum install util-linux-user -y
     fi
 
     # install zsh
@@ -65,6 +63,8 @@ elif [[ $sys =~ $linux ]]; then
     fi
 
     chsh -s /usr/bin/zsh
+
+    exec zsh
 
     # execute
     install
