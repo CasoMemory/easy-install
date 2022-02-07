@@ -19,6 +19,9 @@ install() {
     nv=`nvm -v`
     nov=`node -v`
 
+    # install cnpm
+    npm install -g cnpm --registry=https://registry.npmmirror.com
+
     # install omz
     sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 
