@@ -5,7 +5,7 @@ When you want to initialize development environment at macOS for developing web 
 when you start to execute the shell at MacOS, please ensure the xcode tool is installed. Otherwise, please execute the command at your terminal.
 
 ```
-xcode-install
+xcode-select --install
 ```
 
 ## Feature
