@@ -7,7 +7,7 @@ empty_str=""
 
 install() {
     # install nvm
-    curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
+    curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.3/install.sh | bash
 
     # make the nvm command active
     source ~/.nvm/nvm.sh
