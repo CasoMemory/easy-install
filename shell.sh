@@ -37,7 +37,9 @@ if [[ $sys =~ $mac ]]; then
     xcode-select --install
 
     # install homebrew
-    /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+    export HOMEBREW_NO_INSTALL_FROM_API=1
+    
+    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
     # execute
     install
