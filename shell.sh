@@ -20,7 +20,7 @@ install() {
     nov=`node -v`
 
     # install omz
-    sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+    sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 
     # write the .zshrc file
     echo 'export NVM_DIR="$HOME/.nvm"' >> ~/.zshrc
